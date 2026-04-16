@@ -83,7 +83,11 @@ function App() {
               <a className="border border-gray-600 hover:border-white px-6 py-3 rounded-xl text-white">
                 Contact
               </a>
-              <a className="bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded-xl text-white">
+              <a
+                href="/cv.pdf"
+                download="Eslam_Reda_CV.pdf"
+                className="bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded-xl text-white"
+              >
                 Download CV
               </a>
             </div>
