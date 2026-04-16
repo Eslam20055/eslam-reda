@@ -18,12 +18,18 @@ function App() {
       {/* Navbar */}
       <nav className="fixed top-0 w-full bg-gray-950/80 backdrop-blur-md border-b border-gray-800 z-50">
         <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-          <h1 className="text-xl md:text-2xl font-bold text-white">Eslam Reda</h1>
+          <h1 className="text-xl md:text-2xl font-bold text-white">
+            Eslam Reda
+          </h1>
 
           {/* Desktop Links */}
           <div className="hidden md:flex gap-8 text-gray-300 font-medium">
             {links.map((l) => (
-              <a key={l.name} href={l.href} className="hover:text-white transition">
+              <a
+                key={l.name}
+                href={l.href}
+                className="hover:text-white transition"
+              >
                 {l.name}
               </a>
             ))}
@@ -76,13 +82,17 @@ function App() {
               Industrial Automation • PLC • Smart Energy • Full Stack Dev
             </p>
 
+            {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-6">
               <a className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl text-white">
                 Projects
               </a>
+
               <a className="border border-gray-600 hover:border-white px-6 py-3 rounded-xl text-white">
                 Contact
               </a>
+
+              {/* CV DOWNLOAD */}
               <a
                 href="/cv.pdf"
                 download="Eslam_Reda_CV.pdf"
@@ -102,7 +112,11 @@ function App() {
           >
             <div className="w-56 h-56 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 p-1">
               <div className="w-full h-full rounded-full overflow-hidden border-4 border-gray-900">
-                <img src="/profile.jpg" className="w-full h-full object-cover" />
+                <img
+                  src="/profile.jpg"
+                  className="w-full h-full object-cover"
+                  alt="profile"
+                />
               </div>
             </div>
           </motion.div>
@@ -123,7 +137,9 @@ function App() {
       {/* Skills */}
       <section id="skills" className="py-24 bg-gray-900">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-white text-center mb-12">Skills</h2>
+          <h2 className="text-4xl font-bold text-white text-center mb-12">
+            Skills
+          </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -160,7 +176,6 @@ function App() {
       <footer className="bg-black py-10 text-center text-gray-500">
         © 2026 Eslam Reda • Pro Portfolio
       </footer>
-      console.log("CV fix deployed");
     </div>
   );
 }
