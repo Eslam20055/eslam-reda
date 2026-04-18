@@ -730,13 +730,75 @@ img {
     display: inline-flex;
   }
 
+  .topbar {
+    background: rgba(8, 10, 14, 0.88);
+  }
+
+  .mobile-panel {
+    padding: 0 20px 20px;
+  }
+
+  .mobile-panel a {
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+  }
+
   .hero-section {
-    padding-top: 30px;
+    padding-top: 24px;
   }
 
   .section,
   .contact-section {
-    padding: 84px 0;
+    padding: 72px 0;
+  }
+
+  .hero-layout {
+    gap: 28px;
+  }
+
+  .hero-copy {
+    text-align: center;
+  }
+
+  .hero-chip {
+    margin-inline: auto;
+  }
+
+  .hero-copy h1 {
+    margin-inline: auto;
+    font-size: clamp(2.7rem, 10vw, 4.5rem);
+  }
+
+  .hero-text {
+    margin-inline: auto;
+    font-size: 0.98rem;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .block-title,
+  .block-title.left {
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .portrait-panel {
+    width: min(100%, 560px);
+  }
+
+  .portrait-caption {
+    text-align: center;
+  }
+
+  .floating {
+    text-align: left;
+  }
+
+  .contact-shell {
+    padding: 28px;
   }
 }
 
@@ -751,6 +813,16 @@ img {
 
   .brand {
     gap: 10px;
+    min-width: 0;
+  }
+
+  .brand > span:last-child {
+    min-width: 0;
+  }
+
+  .brand small {
+    white-space: normal;
+    line-height: 1.4;
   }
 
   .brand-mark {
@@ -758,9 +830,65 @@ img {
     height: 40px;
   }
 
+  .mobile-panel {
+    gap: 10px;
+    padding: 0 12px 16px;
+  }
+
+  .mobile-panel a {
+    padding: 13px 14px;
+    border-radius: 14px;
+    font-size: 0.95rem;
+  }
+
+  .hero-section {
+    padding: 18px 0 28px;
+  }
+
+  .hero-layout {
+    gap: 22px;
+  }
+
+  .hero-chip {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 12px;
+    font-size: 0.8rem;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.25rem, 11vw, 3.2rem);
+    line-height: 0.98;
+    letter-spacing: -0.05em;
+  }
+
+  .hero-text {
+    font-size: 0.94rem;
+    line-height: 1.75;
+  }
+
   .button,
   .header-cta {
     width: 100%;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-trustbar {
+    margin-top: 24px;
+    gap: 10px;
+  }
+
+  .trust-item {
+    padding: 16px;
+    text-align: center;
+  }
+
+  .hero-visual {
+    gap: 12px;
   }
 
   .portrait-panel {
@@ -768,8 +896,59 @@ img {
     border-radius: 26px;
   }
 
+  .portrait-topline {
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+  }
+
   .portrait-image {
     border-radius: 20px;
+  }
+
+  .portrait-caption {
+    padding: 16px 4px 4px;
+  }
+
+  .portrait-caption h3 {
+    font-size: 1.1rem;
+  }
+
+  .floating {
+    width: 100%;
+    padding: 14px;
+    border-radius: 18px;
+  }
+
+  .floating strong {
+    font-size: 0.95rem;
+  }
+
+  .floating span {
+    font-size: 0.82rem;
+  }
+
+  .section,
+  .contact-section {
+    padding: 62px 0;
+  }
+
+  .block-title {
+    margin-bottom: 34px;
+  }
+
+  .block-title span {
+    margin-bottom: 10px;
+    font-size: 0.72rem;
+  }
+
+  .block-title h2 {
+    font-size: clamp(1.75rem, 9vw, 2.4rem);
+    line-height: 1.08;
+  }
+
+  .block-title p {
+    font-size: 0.94rem;
+    line-height: 1.75;
   }
 
   .contact-shell,
@@ -781,16 +960,109 @@ img {
     padding-right: 18px;
   }
 
+  .pillar-card,
+  .journey-card,
+  .expertise-column {
+    padding-top: 22px;
+    padding-bottom: 22px;
+    border-radius: 22px;
+  }
+
+  .pillar-grid,
+  .journey-grid,
+  .contact-grid,
+  .expertise-board {
+    gap: 16px;
+  }
+
+  .expertise-column ul {
+    margin-top: 16px;
+    gap: 12px;
+  }
+
+  .expertise-column li {
+    font-size: 0.94rem;
+    line-height: 1.6;
+  }
+
+  .journey-meta {
+    margin-bottom: 14px;
+  }
+
+  .journey-subtitle {
+    font-size: 0.94rem;
+  }
+
+  .journey-text {
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
   .credential-image-wrap {
     padding: 14px;
   }
 
   .credential-image {
     min-height: 250px;
+    border-radius: 18px;
+  }
+
+  .credential-body {
+    padding-top: 2px;
+    padding-bottom: 20px;
+  }
+
+  .credential-note {
+    font-size: 0.76rem;
+  }
+
+  .credential-body h3 {
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+
+  .credential-body p {
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .contact-shell {
+    padding-top: 22px;
+    padding-bottom: 22px;
+    border-radius: 26px;
+  }
+
+  .contact-card {
+    padding: 16px;
+    gap: 12px;
+    align-items: center;
+    border-radius: 20px;
+  }
+
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  .contact-card strong {
+    font-size: 0.95rem;
+  }
+
+  .contact-card span {
+    display: block;
+    font-size: 0.84rem;
+    line-height: 1.5;
+  }
+
+  .contact-arrow {
+    flex-shrink: 0;
   }
 
   .footer-row {
     flex-direction: column;
     align-items: flex-start;
+    gap: 8px;
+    font-size: 0.9rem;
   }
 }

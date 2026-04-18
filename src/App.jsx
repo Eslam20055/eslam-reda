@@ -12,7 +12,7 @@ import {
   GraduationCap,
   Mail,
   Menu,
-  Phone,
+  MessageCircle,
   ShieldCheck,
   Star,
   Wrench,
@@ -146,10 +146,10 @@ const contactItems = [
     href: 'mailto:eslamyassen6666@gmail.com',
   },
   {
-    icon: Phone,
-    title: 'Phone',
+    icon: MessageCircle,
+    title: 'WhatsApp',
     value: '+20 155 996 8209',
-    href: 'tel:+201559968209',
+    href: 'https://wa.me/201559968209',
   },
   {
     icon: ContactRound,
