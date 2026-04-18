@@ -2,11 +2,9 @@ import './App.css';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
-  ArrowRight,
   ArrowUpRight,
-  Award,
   BadgeCheck,
-  Briefcase,
+  BriefcaseBusiness,
   CircuitBoard,
   ContactRound,
   Download,
@@ -16,8 +14,8 @@ import {
   Menu,
   Phone,
   ShieldCheck,
-  Sparkles,
-  Workflow,
+  Star,
+  Wrench,
   X,
   Zap,
 } from 'lucide-react';
@@ -29,144 +27,118 @@ import certClassic from './assets/images/certificate-ha-classic-control.jpg';
 import certMotor from './assets/images/certificate-ha-motor-drive.jpg';
 import certMam from './assets/images/certificate-mam-summer-training.jpg';
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 32 },
+const reveal = {
+  hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0 },
 };
 
-const staggerBlock = {
+const stagger = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.12,
+      staggerChildren: 0.1,
     },
   },
 };
 
 const navLinks = [
-  { href: '#about', label: 'About' },
-  { href: '#services', label: 'Value' },
-  { href: '#skills', label: 'Skills' },
+  { href: '#profile', label: 'Profile' },
+  { href: '#expertise', label: 'Expertise' },
   { href: '#journey', label: 'Journey' },
   { href: '#credentials', label: 'Credentials' },
   { href: '#contact', label: 'Contact' },
 ];
 
-const metrics = [
-  { value: '5+', label: 'Certified technical tracks' },
-  { value: '120h', label: 'ITI full-stack program' },
-  { value: '2025', label: 'Latest hands-on training year' },
+const trustStats = [
+  { value: 'Electrical Power', label: 'Engineering foundation' },
+  { value: 'Automation', label: 'PLC and control mindset' },
+  { value: '5 Certificates', label: 'Recent proof of progress' },
 ];
 
-const spotlightCards = [
-  {
-    icon: CircuitBoard,
-    title: 'Automation & Control',
-    description:
-      'Practical PLC logic, classical control, motor drives, and panel-minded engineering thinking.',
-  },
+const pillars = [
   {
     icon: Zap,
-    title: 'Electrical Power',
-    description:
-      'Low-voltage systems, protection awareness, testing discipline, and energy efficiency focus.',
+    title: 'Power Systems',
+    text: 'Low-voltage systems, panels, testing awareness, and practical electrical discipline.',
   },
   {
-    icon: Workflow,
-    title: 'Professional Delivery',
-    description:
-      'Clean digital presentation, structured communication, and a polished portfolio experience.',
+    icon: CircuitBoard,
+    title: 'Automation Logic',
+    text: 'Classic control, PLC basics, drive programming, and industrial workflow thinking.',
+  },
+  {
+    icon: Wrench,
+    title: 'Execution Quality',
+    text: 'Clean communication, presentable delivery, and a professional standard in every detail.',
   },
 ];
 
-const serviceCards = [
+const expertiseColumns = [
   {
-    title: 'Technical Presence',
-    text: 'A profile that clearly communicates engineering capability, growth mindset, and professional discipline.',
+    title: 'Engineering Focus',
+    items: ['Low Voltage Panels', 'MCC and ATS Systems', 'Power Factor Correction', 'Testing and QA Awareness'],
   },
   {
-    title: 'Cross-Disciplinary Value',
-    text: 'A rare mix of electrical power, industrial automation, and web delivery that helps bridge technical and business needs.',
+    title: 'Automation Skills',
+    items: ['PLC Programming', 'Classic Control', 'Motor and Drive Control', 'Industrial Sensors'],
   },
   {
-    title: 'Ready-to-Grow Mindset',
-    text: 'Strong learning speed, practical training exposure, and clear enthusiasm for internships, junior roles, and real-world execution.',
-  },
-];
-
-const skillGroups = [
-  {
-    title: 'Automation & Control',
-    items: ['PLC Programming', 'Classic Control', 'Motor & Drive Control', 'Industrial Sensors', 'MCC & ATS Panels', 'Commissioning Support'],
-  },
-  {
-    title: 'Electrical Systems',
-    items: ['Low Voltage Panels', 'Power Factor Correction', 'Energy Efficiency', 'Testing & QA', 'Safety Practices', 'Schneider Solutions'],
-  },
-  {
-    title: 'Web & Software',
-    items: ['React + Vite', 'JavaScript', 'Tailwind CSS', 'Laravel & PHP', 'MySQL', 'UI Presentation'],
+    title: 'Digital Advantage',
+    items: ['React and Vite', 'Portfolio UI Systems', 'Laravel and PHP Basics', 'Structured Technical Presentation'],
   },
 ];
 
-const timeline = [
+const journey = [
   {
     year: '2025',
-    icon: Briefcase,
-    title: 'Summer Training',
-    company: 'MAM Engineering Industries',
-    summary:
-      'Worked around low-voltage panel workflows, MCC, ATS, power factor correction, and quality-first industrial practices.',
+    icon: BriefcaseBusiness,
+    title: 'MAM Engineering Industries',
+    subtitle: 'Summer Training',
+    text: 'Practical exposure to LV panel work, ATS, MCC, Schneider-based systems, and professional industrial routines.',
   },
   {
     year: '2025',
     icon: GraduationCap,
-    title: 'ITI Full-Stack Program',
-    company: 'Information Technology Institute',
-    summary:
-      'Completed an intensive web development track covering front-end foundations, PHP, Laravel, and database workflows.',
+    title: 'Information Technology Institute',
+    subtitle: 'Full-Stack Program',
+    text: 'Completed a 120-hour training path in front-end foundations, PHP, Laravel, and database-backed development.',
   },
 ];
 
-const certificates = [
+const credentials = [
   {
-    img: certIti,
+    image: certIti,
     title: 'Full Stack Web Development',
-    issuer: 'Information Technology Institute',
-    desc: 'A 120-hour immersive track in client-side fundamentals, backend basics, PHP, Laravel, and MySQL.',
-    accent: 'Digital expansion',
+    org: 'Information Technology Institute',
+    note: '120-hour intensive track',
   },
   {
-    img: certPlc,
+    image: certPlc,
     title: 'PLC Basic Programming',
-    issuer: 'HA Consulting Group',
-    desc: 'Core PLC logic and programming principles for industrial automation environments.',
-    accent: 'Excellent grade',
+    org: 'HA Consulting Group',
+    note: 'Excellent grade',
   },
   {
-    img: certClassic,
+    image: certClassic,
     title: 'Classic Control',
-    issuer: 'HA Consulting Group',
-    desc: 'Focused study in relays, contactors, timers, and foundational motor control systems.',
-    accent: 'Excellent grade',
+    org: 'HA Consulting Group',
+    note: 'Excellent grade',
   },
   {
-    img: certMotor,
-    title: 'Electric Motor & Drive Programming',
-    issuer: 'HA Consulting Group',
-    desc: 'Motor control and drive programming training across practical industrial scenarios.',
-    accent: 'Excellent grade',
+    image: certMotor,
+    title: 'Electric Motor and Drive Programming',
+    org: 'HA Consulting Group',
+    note: 'Excellent grade',
   },
   {
-    img: certMam,
-    title: 'Summer Training - LV Panels',
-    issuer: 'MAM Engineering Industries',
-    desc: 'Hands-on exposure to panel assembly, ATS, MCC, power factor correction, and Schneider-based solutions.',
-    accent: 'Industrial exposure',
+    image: certMam,
+    title: 'Summer Training in LV Panels',
+    org: 'MAM Engineering Industries',
+    note: 'Industrial exposure',
   },
 ];
 
-const contactCards = [
+const contactItems = [
   {
     icon: Mail,
     title: 'Email',
@@ -182,25 +154,25 @@ const contactCards = [
   {
     icon: ContactRound,
     title: 'LinkedIn',
-    value: 'Professional profile',
+    value: 'View professional profile',
     href: 'https://www.linkedin.com/in/eslam-reda-5b1129382',
   },
   {
     icon: Earth,
     title: 'GitHub',
-    value: 'Projects and code samples',
+    value: 'See technical work',
     href: 'https://github.com/Eslam20055',
   },
 ];
 
-function SectionHeading({ eyebrow, title, text, align = 'center' }) {
+function BlockTitle({ eyebrow, title, text, left = false }) {
   return (
     <motion.div
-      className={`section-heading ${align === 'left' ? 'left-aligned' : ''}`}
-      variants={fadeInUp}
+      className={`block-title ${left ? 'left' : ''}`}
+      variants={reveal}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.25 }}
       transition={{ duration: 0.7, ease: 'easeOut' }}
     >
       <span>{eyebrow}</span>
@@ -217,29 +189,29 @@ function App() {
 
   return (
     <div className="site-shell">
-      <div className="ambient ambient-one" />
-      <div className="ambient ambient-two" />
-      <div className="ambient ambient-three" />
+      <div className="noise-layer" />
+      <div className="glow glow-one" />
+      <div className="glow glow-two" />
 
       <header className="topbar">
-        <div className="container nav-inner">
+        <div className="container nav-row">
           <a href="#hero" className="brand" onClick={closeMenu}>
             <span className="brand-mark">ER</span>
             <span>
               Eslam Reda
-              <small>Electrical Power, Automation, and Technical Delivery</small>
+              <small>Electrical Power and Automation Engineer in Progress</small>
             </span>
           </a>
 
-          <div className="nav-links desktop-only">
+          <nav className="nav-links desktop-only">
             {navLinks.map((link) => (
               <a key={link.href} href={link.href}>
                 {link.label}
               </a>
             ))}
-          </div>
+          </nav>
 
-          <a href="/cv.pdf" download className="nav-cta desktop-only">
+          <a href="/cv.pdf" download className="header-cta desktop-only">
             Resume
             <Download size={16} />
           </a>
@@ -258,9 +230,8 @@ function App() {
         {isMenuOpen && (
           <motion.div
             className="mobile-panel mobile-only"
-            initial={{ opacity: 0, y: -12 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.24, ease: 'easeOut' }}
           >
             {navLinks.map((link) => (
@@ -277,213 +248,164 @@ function App() {
 
       <main>
         <section id="hero" className="hero-section">
-          <div className="container hero-grid">
+          <div className="container hero-layout">
             <motion.div
               className="hero-copy"
-              variants={staggerBlock}
+              variants={stagger}
               initial="hidden"
               animate="visible"
             >
-              <motion.div className="eyebrow" variants={fadeInUp} transition={{ duration: 0.6 }}>
-                <Sparkles size={16} />
-                Built to create a strong first impression
+              <motion.div className="hero-chip" variants={reveal} transition={{ duration: 0.6 }}>
+                <Star size={14} />
+                Premium engineering portfolio
               </motion.div>
 
-              <motion.h1 variants={fadeInUp} transition={{ duration: 0.8, ease: 'easeOut' }}>
-                A modern engineering portfolio that feels
-                <span> confident, polished, and immediately credible.</span>
+              <motion.h1 variants={reveal} transition={{ duration: 0.8 }}>
+                A sharper digital presence for an engineer building real technical credibility.
               </motion.h1>
 
-              <motion.p className="hero-lead" variants={fadeInUp} transition={{ duration: 0.8 }}>
-                I am Eslam Reda Yassen, an Electrical Power Engineering student building a professional path across
-                industrial automation, low-voltage systems, and digital presentation. This portfolio is designed to
-                reflect precision, ambition, and real technical momentum.
+              <motion.p className="hero-text" variants={reveal} transition={{ duration: 0.75 }}>
+                Electrical Power Engineering student with hands-on training in low-voltage systems, industrial
+                automation, PLC fundamentals, and technical delivery. Built to present serious potential with a more
+                executive and trustworthy visual identity.
               </motion.p>
 
-              <motion.div className="hero-actions" variants={fadeInUp} transition={{ duration: 0.8 }}>
+              <motion.div className="hero-actions" variants={reveal} transition={{ duration: 0.7 }}>
                 <a href="#contact" className="button button-primary">
-                  Hire or collaborate
+                  Let&apos;s connect
                   <ArrowUpRight size={18} />
                 </a>
                 <a href="#credentials" className="button button-secondary">
-                  Explore credentials
+                  View certificates
                 </a>
               </motion.div>
 
-              <motion.div className="metrics-grid" variants={staggerBlock}>
-                {metrics.map((metric) => (
-                  <motion.article
-                    key={metric.label}
-                    className="metric-card"
-                    variants={fadeInUp}
+              <motion.div className="hero-trustbar" variants={stagger}>
+                {trustStats.map((item) => (
+                  <motion.div
+                    key={item.value}
+                    className="trust-item"
+                    variants={reveal}
                     transition={{ duration: 0.6 }}
                   >
-                    <strong>{metric.value}</strong>
-                    <span>{metric.label}</span>
-                  </motion.article>
+                    <strong>{item.value}</strong>
+                    <span>{item.label}</span>
+                  </motion.div>
                 ))}
               </motion.div>
             </motion.div>
 
             <motion.div
               className="hero-visual"
-              initial={{ opacity: 0, x: 36 }}
+              initial={{ opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.9, ease: 'easeOut' }}
             >
-              <div className="hero-orbit hero-orbit-one" />
-              <div className="hero-orbit hero-orbit-two" />
-
               <motion.div
-                className="profile-frame"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut' }}
+                className="portrait-panel"
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <div className="profile-badge">
+                <div className="portrait-topline">
+                  <span>Selected profile</span>
                   <BadgeCheck size={16} />
-                  Open for internships, junior roles, and serious collaborations
                 </div>
 
-                <img src={profileImg} alt="Eslam Reda Yassen portrait" className="profile-image" />
+                <img src={profileImg} alt="Eslam Reda Yassen" className="portrait-image" />
 
-                <div className="profile-grid">
-                  <div className="profile-mini-card">
-                    <ShieldCheck size={18} />
-                    <div>
-                      <strong>Reliable execution</strong>
-                      <span>Focused on structured, practical engineering work.</span>
-                    </div>
-                  </div>
-                  <div className="profile-mini-card">
-                    <Award size={18} />
-                    <div>
-                      <strong>Recent credentials</strong>
-                      <span>Training and certificates that support real capability.</span>
-                    </div>
-                  </div>
+                <div className="portrait-caption">
+                  <h3>Eslam Reda Yassen</h3>
+                  <p>Power engineering, industrial automation, and clean professional delivery.</p>
                 </div>
               </motion.div>
 
               <motion.div
-                className="hero-floating hero-floating-top"
+                className="floating floating-a"
                 animate={{ y: [0, 12, 0] }}
+                transition={{ duration: 5.6, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <ShieldCheck size={18} />
+                <div>
+                  <strong>Disciplined execution</strong>
+                  <span>Clear, structured, and reliable.</span>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="floating floating-b"
+                animate={{ y: [0, -12, 0] }}
                 transition={{ duration: 5.2, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <span>Automation mindset</span>
-                <strong>Systems-oriented and growth-ready</strong>
-              </motion.div>
-
-              <motion.div
-                className="hero-floating hero-floating-bottom"
-                animate={{ y: [0, -14, 0] }}
-                transition={{ duration: 5.8, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <span>Presentation quality</span>
-                <strong>Designed to feel premium on every screen</strong>
+                <Zap size={18} />
+                <div>
+                  <strong>Industrial focus</strong>
+                  <span>Panels, control, and practical systems thinking.</span>
+                </div>
               </motion.div>
             </motion.div>
           </div>
         </section>
 
-        <section id="about" className="section">
+        <section id="profile" className="section">
           <div className="container">
-            <SectionHeading
+            <BlockTitle
               eyebrow="Profile"
-              title="The portfolio now tells a stronger story before anyone starts reading deeply."
-              text="Instead of feeling like a simple resume page, the experience highlights professionalism, structure, and technical range from the very first screen."
+              title="Designed to feel closer to a senior engineer’s personal brand than a basic student template."
+              text="The layout emphasizes confidence, restraint, hierarchy, and polish. It is intentionally cleaner and more premium so the first impression feels serious and memorable."
             />
 
             <motion.div
-              className="spotlight-grid"
-              variants={staggerBlock}
+              className="pillar-grid"
+              variants={stagger}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
             >
-              {spotlightCards.map(({ icon: Icon, title, description }) => (
+              {pillars.map(({ icon: Icon, title, text }) => (
                 <motion.article
                   key={title}
-                  className="spotlight-card"
-                  variants={fadeInUp}
+                  className="pillar-card"
+                  variants={reveal}
                   transition={{ duration: 0.6 }}
                 >
-                  <div className="feature-icon">
-                    <Icon size={22} />
+                  <div className="pillar-icon">
+                    <Icon size={20} />
                   </div>
                   <h3>{title}</h3>
-                  <p>{description}</p>
+                  <p>{text}</p>
                 </motion.article>
               ))}
             </motion.div>
           </div>
         </section>
 
-        <section id="services" className="section section-alt">
-          <div className="container">
-            <SectionHeading
-              eyebrow="Value"
-              title="A cleaner, more convincing positioning for employers and clients."
-              text="This layout frames your background as a complete professional profile: technically grounded, visually polished, and easy to trust."
+        <section id="expertise" className="section section-contrast">
+          <div className="container editorial-layout">
+            <BlockTitle
+              eyebrow="Expertise"
+              title="Capabilities are presented in a deliberate, editorial way instead of crowded skill boxes."
+              text="That helps recruiters and clients scan your strengths quickly and feel a stronger level of control, maturity, and professionalism."
+              left
             />
 
             <motion.div
-              className="service-grid"
-              variants={staggerBlock}
+              className="expertise-board"
+              variants={stagger}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
             >
-              {serviceCards.map((card) => (
+              {expertiseColumns.map((column) => (
                 <motion.article
-                  key={card.title}
-                  className="service-card"
-                  variants={fadeInUp}
+                  key={column.title}
+                  className="expertise-column"
+                  variants={reveal}
                   transition={{ duration: 0.65 }}
                 >
-                  <div className="service-index" />
-                  <h3>{card.title}</h3>
-                  <p>{card.text}</p>
-                  <span className="service-link">
-                    Professional signal
-                    <ArrowRight size={16} />
-                  </span>
-                </motion.article>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
-        <section id="skills" className="section">
-          <div className="container">
-            <SectionHeading
-              eyebrow="Capabilities"
-              title="Skills are grouped into structured capability blocks instead of a crowded list."
-              text="That makes the experience easier to scan and helps recruiters or clients instantly understand the type of value you bring."
-            />
-
-            <motion.div
-              className="skills-grid"
-              variants={staggerBlock}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              {skillGroups.map((group) => (
-                <motion.article
-                  key={group.title}
-                  className="skill-card"
-                  variants={fadeInUp}
-                  transition={{ duration: 0.6 }}
-                >
-                  <div className="skill-card-top">
-                    <h3>{group.title}</h3>
-                  </div>
+                  <h3>{column.title}</h3>
                   <ul>
-                    {group.items.map((item) => (
-                      <li key={item}>
-                        <span className="bullet-dot" />
-                        {item}
-                      </li>
+                    {column.items.map((item) => (
+                      <li key={item}>{item}</li>
                     ))}
                   </ul>
                 </motion.article>
@@ -492,43 +414,40 @@ function App() {
           </div>
         </section>
 
-        <section id="journey" className="section section-alt">
-          <div className="container split-layout">
-            <div>
-              <SectionHeading
-                eyebrow="Journey"
-                title="Recent milestones are presented as a professional growth timeline."
-                text="The section now feels more intentional and gives hiring teams a quick narrative of your development path."
-                align="left"
-              />
-            </div>
+        <section id="journey" className="section">
+          <div className="container">
+            <BlockTitle
+              eyebrow="Journey"
+              title="Professional growth is shown with more structure and stronger visual rhythm."
+              text="The timeline feels less like notes on a page and more like a concise progression of real milestones."
+            />
 
             <motion.div
-              className="timeline"
-              variants={staggerBlock}
+              className="journey-grid"
+              variants={stagger}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
             >
-              {timeline.map((item) => {
+              {journey.map((item) => {
                 const Icon = item.icon;
 
                 return (
                   <motion.article
-                    key={`${item.year}-${item.title}`}
-                    className="timeline-card"
-                    variants={fadeInUp}
+                    key={item.title}
+                    className="journey-card"
+                    variants={reveal}
                     transition={{ duration: 0.65 }}
                   >
-                    <div className="timeline-year">{item.year}</div>
-                    <div className="timeline-icon">
-                      <Icon size={20} />
+                    <div className="journey-meta">
+                      <span>{item.year}</span>
+                      <div className="journey-badge">
+                        <Icon size={18} />
+                      </div>
                     </div>
-                    <div>
-                      <h3>{item.title}</h3>
-                      <p className="timeline-company">{item.company}</p>
-                      <p className="timeline-summary">{item.summary}</p>
-                    </div>
+                    <h3>{item.title}</h3>
+                    <p className="journey-subtitle">{item.subtitle}</p>
+                    <p className="journey-text">{item.text}</p>
                   </motion.article>
                 );
               })}
@@ -536,36 +455,36 @@ function App() {
           </div>
         </section>
 
-        <section id="credentials" className="section">
+        <section id="credentials" className="section section-contrast">
           <div className="container">
-            <SectionHeading
+            <BlockTitle
               eyebrow="Credentials"
-              title="Certificates are arranged like a curated showcase, not just uploaded images."
-              text="Images now live inside a premium gallery layout with stronger hierarchy, cleaner spacing, and hover motion that feels modern and controlled."
+              title="Certificates now read like a curated credentials gallery with better framing and stronger visual order."
+              text="The image treatment is cleaner, spacing is more controlled, and the cards feel closer to premium case-study panels."
             />
 
             <motion.div
-              className="gallery-grid"
-              variants={staggerBlock}
+              className="credentials-showcase"
+              variants={stagger}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: true, amount: 0.12 }}
             >
-              {certificates.map((cert, index) => (
+              {credentials.map((item, index) => (
                 <motion.article
-                  key={cert.title}
-                  className={`gallery-card ${index === 0 ? 'gallery-card-featured' : ''}`}
-                  variants={fadeInUp}
+                  key={item.title}
+                  className={`credential-card ${index === 0 ? 'credential-featured' : ''}`}
+                  variants={reveal}
                   transition={{ duration: 0.65 }}
                 >
-                  <div className="gallery-media">
-                    <img src={cert.img} alt={cert.title} className="gallery-image" />
+                  <div className="credential-image-wrap">
+                    <img src={item.image} alt={item.title} className="credential-image" />
                   </div>
-                  <div className="gallery-body">
-                    <div className="cert-note">{cert.accent}</div>
-                    <h3>{cert.title}</h3>
-                    <p className="cert-issuer">{cert.issuer}</p>
-                    <p className="cert-desc">{cert.desc}</p>
+
+                  <div className="credential-body">
+                    <div className="credential-note">{item.note}</div>
+                    <h3>{item.title}</h3>
+                    <p>{item.org}</p>
                   </div>
                 </motion.article>
               ))}
@@ -575,31 +494,33 @@ function App() {
 
         <section id="contact" className="section contact-section">
           <div className="container contact-shell">
-            <SectionHeading
+            <BlockTitle
               eyebrow="Contact"
-              title="A closing section that feels premium, clear, and easy to act on."
-              text="Whether someone is hiring, partnering, or reviewing your work, the final impression stays polished and direct."
-              align="left"
+              title="A closing section with enough polish to leave the right final impression."
+              text="The contact area is intentionally quiet and premium so the page ends with confidence instead of clutter."
+              left
             />
 
             <motion.div
               className="contact-grid"
-              variants={staggerBlock}
+              variants={stagger}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
             >
-              {contactCards.map(({ icon: Icon, title, value, href }) => (
+              {contactItems.map(({ icon: Icon, title, value, href }) => (
                 <motion.a
                   key={title}
                   href={href}
                   className="contact-card"
                   target={href.startsWith('http') ? '_blank' : undefined}
                   rel={href.startsWith('http') ? 'noreferrer' : undefined}
-                  variants={fadeInUp}
+                  variants={reveal}
                   transition={{ duration: 0.6 }}
                 >
-                  <Icon size={20} />
+                  <div className="contact-icon">
+                    <Icon size={18} />
+                  </div>
                   <div>
                     <strong>{title}</strong>
                     <span>{value}</span>
@@ -613,8 +534,9 @@ function App() {
       </main>
 
       <footer className="footer">
-        <div className="container footer-inner">
-          <p>© 2026 Eslam Reda Yassen. Engineered to make a stronger first impression.</p>
+        <div className="container footer-row">
+          <p>© 2026 Eslam Reda Yassen</p>
+          <p>Professional engineering portfolio</p>
         </div>
       </footer>
     </div>
