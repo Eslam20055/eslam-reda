@@ -260,7 +260,10 @@ img {
 .pillar-card p,
 .journey-text,
 .contact-card span,
-.credential-body p {
+.credential-body p,
+.project-description,
+.project-shot figcaption,
+.project-subtitle {
   color: var(--muted);
   line-height: 1.8;
 }
@@ -314,7 +317,7 @@ img {
 
 .hero-visual {
   position: relative;
-  min-height: 680px;
+  min-height: 720px;
   display: grid;
   place-items: center;
 }
@@ -322,45 +325,28 @@ img {
 .portrait-panel {
   position: relative;
   z-index: 1;
-  width: min(100%, 500px);
-  padding: 20px;
-  border-radius: 34px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
-    rgba(15, 19, 26, 0.96);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: var(--shadow);
+  width: min(100%, 560px);
+  padding: 32px 18px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 50% 40%, rgba(215, 176, 96, 0.18), rgba(10, 13, 18, 0) 62%);
+  border: 0;
+  box-shadow: none;
 }
 
 .portrait-panel::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  z-index: -1;
-  background: linear-gradient(135deg, rgba(215, 176, 96, 0.26), rgba(142, 177, 211, 0.16), transparent 70%);
-}
-
-.portrait-topline {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
-  color: var(--gold-soft);
-  font-size: 0.86rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  content: none;
 }
 
 .portrait-image {
-  width: 100%;
-  aspect-ratio: 4 / 5;
+  width: min(100%, 430px);
+  aspect-ratio: 1;
+  margin: 0 auto;
   object-fit: cover;
-  border-radius: 26px;
-}
-
-.portrait-caption {
-  padding: 18px 6px 6px;
+  object-position: center top;
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.06);
+  background: #0b0e13;
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.32);
 }
 
 .portrait-caption h3,
@@ -370,35 +356,6 @@ img {
 .credential-body h3,
 .contact-card strong {
   margin: 0 0 8px;
-}
-
-.floating {
-  position: absolute;
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  width: 230px;
-  padding: 16px;
-  border-radius: 22px;
-  background: rgba(15, 18, 24, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: var(--shadow);
-}
-
-.floating span {
-  color: var(--muted);
-  font-size: 0.88rem;
-  line-height: 1.6;
-}
-
-.floating-a {
-  top: 110px;
-  right: -10px;
-}
-
-.floating-b {
-  bottom: 86px;
-  left: -12px;
 }
 
 .section {
@@ -437,7 +394,8 @@ img {
 
 .pillar-grid,
 .journey-grid,
-.contact-grid {
+.contact-grid,
+.project-grid {
   display: grid;
   gap: 22px;
 }
@@ -524,6 +482,110 @@ img {
   padding: 28px;
 }
 
+.project-card {
+  background: var(--panel-strong);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+}
+
+.project-card {
+  padding: 30px;
+}
+
+.project-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.project-kicker,
+.media-label {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: var(--gold-soft);
+  background: rgba(215, 176, 96, 0.1);
+  border: 1px solid rgba(215, 176, 96, 0.18);
+  font-size: 0.82rem;
+}
+
+.project-card h3 {
+  margin: 16px 0 8px;
+}
+
+.project-subtitle {
+  margin: 0;
+  color: #ddd0b2;
+}
+
+.project-description {
+  margin: 22px 0 0;
+}
+
+.project-highlights {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.project-highlights span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ede4d2;
+  font-size: 0.92rem;
+}
+
+.project-media {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: 22px;
+}
+
+.project-video video {
+  width: 100%;
+  margin-top: 14px;
+  border-radius: 18px;
+  background: #050608;
+}
+
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.project-shot {
+  margin: 0;
+}
+
+.project-shot:first-child {
+  grid-column: 1 / -1;
+}
+
+.project-shot img {
+  width: 100%;
+  height: 100%;
+  min-height: 190px;
+  object-fit: cover;
+  border-radius: 16px;
+  background: transparent;
+}
+
+.project-shot figcaption {
+  margin-top: 10px;
+  font-size: 0.88rem;
+}
+
 .journey-meta {
   display: flex;
   align-items: center;
@@ -563,28 +625,19 @@ img {
 .credential-card {
   grid-column: span 4;
   overflow: hidden;
-  background: var(--panel-strong);
-}
-
-.credential-featured {
-  grid-column: span 8;
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
-}
-
-.credential-image-wrap {
-  padding: 18px;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 .credential-image {
   width: 100%;
-  height: 100%;
+  height: auto;
   min-height: 320px;
   object-fit: contain;
-  border-radius: 22px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
-    rgba(255, 255, 255, 0.03);
+  border-radius: 24px;
+  background: transparent;
   transition: transform 260ms ease;
 }
 
@@ -592,15 +645,22 @@ img {
   transform: scale(1.02);
 }
 
-.credential-body {
-  padding: 0 24px 24px;
+.credential-card-compact {
+  grid-column: 5 / span 4;
 }
 
-.credential-featured .credential-body {
-  padding: 26px 26px 26px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.credential-card-compact .credential-image {
+  min-height: 220px;
+  max-width: 78%;
+  margin: 0 auto;
+}
+
+.credential-card-compact .credential-body {
+  text-align: center;
+}
+
+.credential-body {
+  padding: 18px 8px 8px;
 }
 
 .credential-note {
@@ -679,7 +739,8 @@ img {
   .pillar-grid,
   .expertise-board,
   .journey-grid,
-  .contact-grid {
+  .contact-grid,
+  .project-media {
     grid-template-columns: 1fr;
   }
 
@@ -691,33 +752,20 @@ img {
     max-width: 100%;
   }
 
-  .hero-visual {
-    min-height: auto;
-    padding-top: 28px;
-  }
-
   .hero-trustbar {
     grid-template-columns: 1fr;
   }
 
-  .floating {
-    position: static;
-    width: 100%;
-    margin-top: 16px;
-  }
-
   .credentials-showcase {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .credential-card,
-  .credential-featured {
+  .credential-card {
     grid-column: auto;
-    grid-template-columns: 1fr;
   }
 
-  .credential-featured .credential-body {
-    padding: 0 24px 24px;
+  .credential-card-compact {
+    grid-column: auto;
   }
 }
 
@@ -785,16 +833,9 @@ img {
     margin-inline: auto;
   }
 
-  .portrait-panel {
-    width: min(100%, 560px);
-  }
-
-  .portrait-caption {
-    text-align: center;
-  }
-
-  .floating {
-    text-align: left;
+  .hero-visual {
+    min-height: auto;
+    padding-top: 18px;
   }
 
   .contact-shell {
@@ -888,43 +929,17 @@ img {
   }
 
   .hero-visual {
-    gap: 12px;
+    gap: 0;
   }
 
   .portrait-panel {
-    padding: 14px;
-    border-radius: 26px;
-  }
-
-  .portrait-topline {
-    font-size: 0.74rem;
-    letter-spacing: 0.08em;
+    width: min(100%, 100%);
+    padding: 12px 0;
   }
 
   .portrait-image {
-    border-radius: 20px;
-  }
-
-  .portrait-caption {
-    padding: 16px 4px 4px;
-  }
-
-  .portrait-caption h3 {
-    font-size: 1.1rem;
-  }
-
-  .floating {
-    width: 100%;
-    padding: 14px;
-    border-radius: 18px;
-  }
-
-  .floating strong {
-    font-size: 0.95rem;
-  }
-
-  .floating span {
-    font-size: 0.82rem;
+    width: min(100%, 320px);
+    border-width: 3px;
   }
 
   .section,
@@ -971,8 +986,43 @@ img {
   .pillar-grid,
   .journey-grid,
   .contact-grid,
-  .expertise-board {
+  .expertise-board,
+  .project-gallery,
+  .credentials-showcase {
     gap: 16px;
+  }
+
+  .project-card {
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .project-head {
+    gap: 12px;
+  }
+
+  .project-card h3 {
+    font-size: 1.08rem;
+    line-height: 1.45;
+  }
+
+  .project-description {
+    font-size: 0.92rem;
+    line-height: 1.75;
+  }
+
+  .project-highlights span {
+    width: 100%;
+    text-align: center;
+    font-size: 0.86rem;
+  }
+
+  .project-shot img {
+    min-height: 180px;
+  }
+
+  .credentials-showcase {
+    grid-template-columns: 1fr;
   }
 
   .expertise-column ul {
@@ -996,10 +1046,6 @@ img {
   .journey-text {
     font-size: 0.92rem;
     line-height: 1.7;
-  }
-
-  .credential-image-wrap {
-    padding: 14px;
   }
 
   .credential-image {

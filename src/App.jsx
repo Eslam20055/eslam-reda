@@ -3,21 +3,20 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   ArrowUpRight,
-  BadgeCheck,
   BriefcaseBusiness,
   CircuitBoard,
   ContactRound,
   Download,
   Earth,
+  FolderKanban,
   GraduationCap,
   Mail,
   Menu,
   MessageCircle,
-  ShieldCheck,
+  PlayCircle,
   Star,
   Wrench,
   X,
-  Zap,
 } from 'lucide-react';
 
 import profileImg from './assets/images/eslam-reda-profile.jpg';
@@ -45,46 +44,47 @@ const navLinks = [
   { href: '#profile', label: 'Profile' },
   { href: '#expertise', label: 'Expertise' },
   { href: '#journey', label: 'Journey' },
-  { href: '#credentials', label: 'Credentials' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#credentials', label: 'Certificates' },
   { href: '#contact', label: 'Contact' },
 ];
 
 const trustStats = [
-  { value: 'Electrical Power', label: 'Engineering foundation' },
-  { value: 'Automation', label: 'PLC and control mindset' },
-  { value: '5 Certificates', label: 'Recent proof of progress' },
+  { value: 'Power Engineer', label: 'Main professional identity' },
+  { value: 'Control Systems', label: 'Automation and PID mindset' },
+  { value: 'Industrial Training', label: 'Focused practical development' },
 ];
 
 const pillars = [
   {
     icon: Zap,
-    title: 'Power Systems',
-    text: 'Low-voltage systems, panels, testing awareness, and practical electrical discipline.',
+    title: 'Electrical Power First',
+    text: 'My main track is Electrical Power Engineering with strong interest in energy systems, industrial applications, and practical field-oriented thinking.',
   },
   {
     icon: CircuitBoard,
-    title: 'Automation Logic',
-    text: 'Classic control, PLC basics, drive programming, and industrial workflow thinking.',
+    title: 'Control and Automation',
+    text: 'I build on that foundation through PLC basics, classic control, motor drives, and model-based control ideas.',
   },
   {
     icon: Wrench,
-    title: 'Execution Quality',
-    text: 'Clean communication, presentable delivery, and a professional standard in every detail.',
+    title: 'Professional Presentation',
+    text: 'I focus on presenting engineering work in a clear, organized, and professional way that reflects practical skill and serious technical direction.',
   },
 ];
 
 const expertiseColumns = [
   {
-    title: 'Engineering Focus',
-    items: ['Low Voltage Panels', 'MCC and ATS Systems', 'Power Factor Correction', 'Testing and QA Awareness'],
+    title: 'Power Engineering Focus',
+    items: ['Low Voltage Panels', 'MCC and ATS Systems', 'Power Factor Correction', 'Industrial Electrical Practice'],
   },
   {
-    title: 'Automation Skills',
-    items: ['PLC Programming', 'Classic Control', 'Motor and Drive Control', 'Industrial Sensors'],
+    title: 'Control and Automation',
+    items: ['PLC Programming Basics', 'Classic Control', 'Motor and Drive Control', 'PID-Oriented System Thinking'],
   },
   {
-    title: 'Digital Advantage',
-    items: ['React and Vite', 'Portfolio UI Systems', 'Laravel and PHP Basics', 'Structured Technical Presentation'],
+    title: 'Engineering Tools',
+    items: ['Technical Documentation', 'Project Presentation', 'Engineering Reports', 'Structured Workflow'],
   },
 ];
 
@@ -94,47 +94,69 @@ const journey = [
     icon: BriefcaseBusiness,
     title: 'MAM Engineering Industries',
     subtitle: 'Summer Training',
-    text: 'Practical exposure to LV panel work, ATS, MCC, Schneider-based systems, and professional industrial routines.',
+    text: 'Hands-on exposure to LV panels, ATS, MCC, Schneider-based equipment, and the discipline of industrial electrical work.',
   },
   {
     year: '2025',
     icon: GraduationCap,
-    title: 'Information Technology Institute',
-    subtitle: 'Full-Stack Program',
-    text: 'Completed a 120-hour training path in front-end foundations, PHP, Laravel, and database-backed development.',
+    title: 'ITI Training',
+    subtitle: 'Additional technical development',
+    text: 'Completed additional training as part of my broader technical development, while keeping my main professional direction centered on Electrical Power Engineering.',
+  },
+];
+
+const projects = [
+  {
+    title: 'Nonlinear Two-Tank Water Level Control System',
+    subtitle: 'MATLAB / Simulink project',
+    description:
+      'A nonlinear two-tank water level control system using PID controllers, designed to maintain stable levels and reject disturbances based on a physics-based model aligned with MathWorks practice.',
+    highlights: ['PID-based level regulation', 'Disturbance rejection study', 'Physics-based modeling workflow'],
+    video: '/projects/matlab-two-tank-overview.mp4',
+    images: [
+      '/projects/matlab-two-tank-01.jpg',
+      '/projects/matlab-two-tank-02.jpg',
+      '/projects/matlab-two-tank-03.jpg',
+    ],
   },
 ];
 
 const credentials = [
   {
-    image: certIti,
-    title: 'Full Stack Web Development',
-    org: 'Information Technology Institute',
-    note: '120-hour intensive track',
-  },
-  {
-    image: certPlc,
-    title: 'PLC Basic Programming',
-    org: 'HA Consulting Group',
-    note: 'Excellent grade',
-  },
-  {
-    image: certClassic,
-    title: 'Classic Control',
-    org: 'HA Consulting Group',
-    note: 'Excellent grade',
-  },
-  {
-    image: certMotor,
-    title: 'Electric Motor and Drive Programming',
-    org: 'HA Consulting Group',
-    note: 'Excellent grade',
-  },
-  {
     image: certMam,
     title: 'Summer Training in LV Panels',
     org: 'MAM Engineering Industries',
     note: 'Industrial exposure',
+  },
+  {
+    image: certPlc,
+    title: 'PLC Basic Control',
+    org: 'Industrial Automation Training',
+    note: 'Control systems foundation',
+  },
+  {
+    image: certClassic,
+    title: 'Classic Control',
+    org: 'Industrial Control Training',
+    note: 'Industrial control basics',
+  },
+  {
+    image: certMotor,
+    title: 'Electric Motor and Drive Control',
+    org: 'Drive and Motor Control Training',
+    note: 'Drive application skills',
+  },
+  {
+    image: '/certificates/certificate-schneider-electric-energy-efficiency.jpg',
+    title: 'Energy Efficiency Using Speed Control Techniques',
+    org: 'Schneider Electric',
+    note: 'Energy efficiency focus',
+  },
+  {
+    image: certIti,
+    title: 'ITI Full Stack Training',
+    org: 'Information Technology Institute',
+    note: 'Additional certificate',
   },
 ];
 
@@ -199,7 +221,7 @@ function App() {
             <span className="brand-mark">ER</span>
             <span>
               Eslam Reda
-              <small>Electrical Power and Automation Engineer in Progress</small>
+              <small>Electrical Power Engineer</small>
             </span>
           </a>
 
@@ -257,22 +279,21 @@ function App() {
             >
               <motion.div className="hero-chip" variants={reveal} transition={{ duration: 0.6 }}>
                 <Star size={14} />
-                Premium engineering portfolio
+                Power engineering portfolio
               </motion.div>
 
               <motion.h1 variants={reveal} transition={{ duration: 0.8 }}>
-                A sharper digital presence for an engineer building real technical credibility.
+                Electrical Power Engineer | Industrial Automation &amp; Control Systems
               </motion.h1>
 
               <motion.p className="hero-text" variants={reveal} transition={{ duration: 0.75 }}>
-                Electrical Power Engineering student with hands-on training in low-voltage systems, industrial
-                automation, PLC fundamentals, and technical delivery. Built to present serious potential with a more
-                executive and trustworthy visual identity.
+                Focused on power systems, industrial automation, control applications, and practical engineering
+                training with a professional portfolio that reflects clear technical direction.
               </motion.p>
 
               <motion.div className="hero-actions" variants={reveal} transition={{ duration: 0.7 }}>
-                <a href="#contact" className="button button-primary">
-                  Let&apos;s connect
+                <a href="#projects" className="button button-primary">
+                  View projects
                   <ArrowUpRight size={18} />
                 </a>
                 <a href="#credentials" className="button button-secondary">
@@ -306,41 +327,7 @@ function App() {
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <div className="portrait-topline">
-                  <span>Selected profile</span>
-                  <BadgeCheck size={16} />
-                </div>
-
                 <img src={profileImg} alt="Eslam Reda Yassen" className="portrait-image" />
-
-                <div className="portrait-caption">
-                  <h3>Eslam Reda Yassen</h3>
-                  <p>Power engineering, industrial automation, and clean professional delivery.</p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="floating floating-a"
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 5.6, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <ShieldCheck size={18} />
-                <div>
-                  <strong>Disciplined execution</strong>
-                  <span>Clear, structured, and reliable.</span>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="floating floating-b"
-                animate={{ y: [0, -12, 0] }}
-                transition={{ duration: 5.2, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <Zap size={18} />
-                <div>
-                  <strong>Industrial focus</strong>
-                  <span>Panels, control, and practical systems thinking.</span>
-                </div>
               </motion.div>
             </motion.div>
           </div>
@@ -350,8 +337,8 @@ function App() {
           <div className="container">
             <BlockTitle
               eyebrow="Profile"
-              title="Designed to feel closer to a senior engineer’s personal brand than a basic student template."
-              text="The layout emphasizes confidence, restraint, hierarchy, and polish. It is intentionally cleaner and more premium so the first impression feels serious and memorable."
+              title="This portfolio now presents you clearly as an Electrical Power Engineer with a focused, professional identity."
+              text="The content keeps attention on your engineering direction, practical training, and readiness for professional opportunities."
             />
 
             <motion.div
@@ -383,8 +370,8 @@ function App() {
           <div className="container editorial-layout">
             <BlockTitle
               eyebrow="Expertise"
-              title="Capabilities are presented in a deliberate, editorial way instead of crowded skill boxes."
-              text="That helps recruiters and clients scan your strengths quickly and feel a stronger level of control, maturity, and professionalism."
+              title="Your skills are grouped to keep the message clear: power systems, automation, and practical engineering tools."
+              text="That structure makes the portfolio easier to scan and keeps your technical identity aligned with Electrical Power Engineering."
               left
             />
 
@@ -418,8 +405,8 @@ function App() {
           <div className="container">
             <BlockTitle
               eyebrow="Journey"
-              title="Professional growth is shown with more structure and stronger visual rhythm."
-              text="The timeline feels less like notes on a page and more like a concise progression of real milestones."
+              title="Training milestones now reflect your growth in power engineering, industrial practice, and technical communication."
+              text="This gives the timeline a cleaner and more professional story without shifting focus away from your engineering path."
             />
 
             <motion.div
@@ -455,12 +442,80 @@ function App() {
           </div>
         </section>
 
-        <section id="credentials" className="section section-contrast">
+        <section id="projects" className="section section-contrast">
           <div className="container">
             <BlockTitle
-              eyebrow="Credentials"
-              title="Certificates now read like a curated credentials gallery with better framing and stronger visual order."
-              text="The image treatment is cleaner, spacing is more controlled, and the cards feel closer to premium case-study panels."
+              eyebrow="Projects"
+              title="Your engineering project is presented as a focused case study with video and supporting visuals."
+              text="The layout keeps attention on the technical work itself and feels cleaner on both desktop and mobile."
+            />
+
+            <motion.div
+              className="project-grid"
+              variants={stagger}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.12 }}
+            >
+              {projects.map((project) => (
+                <motion.article
+                  key={project.title}
+                  className="project-card"
+                  variants={reveal}
+                  transition={{ duration: 0.65 }}
+                >
+                  <div className="project-head">
+                    <div>
+                      <div className="project-kicker">
+                        <FolderKanban size={16} />
+                        Featured engineering project
+                      </div>
+                      <h3>{project.title}</h3>
+                      <p className="project-subtitle">{project.subtitle}</p>
+                    </div>
+                  </div>
+
+                  <p className="project-description">{project.description}</p>
+
+                  <div className="project-highlights">
+                    {project.highlights.map((item) => (
+                      <span key={item}>{item}</span>
+                    ))}
+                  </div>
+
+                  <div className="project-media">
+                    <div className="project-video">
+                      <div className="media-label">
+                        <PlayCircle size={16} />
+                        Demo video
+                      </div>
+                      <video controls preload="metadata" poster={project.images[0]}>
+                        <source src={project.video} type="video/mp4" />
+                      </video>
+                    </div>
+
+                    <div className="project-gallery">
+                      {project.images.map((image, index) => (
+                        <figure key={image} className="project-shot">
+                          <img src={image} alt={`${project.title} visual ${index + 1}`} />
+                          <figcaption>Project visual {index + 1}</figcaption>
+                        </figure>
+                      ))}
+                    </div>
+                  </div>
+                </motion.article>
+              ))}
+            </motion.div>
+
+          </div>
+        </section>
+
+        <section id="credentials" className="section">
+          <div className="container">
+            <BlockTitle
+              eyebrow="Certificates"
+              title="The certificates section is now focused on your original electrical and automation training."
+              text="The programming certificate is kept only as a small additional certificate at the very end."
             />
 
             <motion.div
@@ -472,14 +527,12 @@ function App() {
             >
               {credentials.map((item, index) => (
                 <motion.article
-                  key={item.title}
-                  className={`credential-card ${index === 0 ? 'credential-featured' : ''}`}
+                  key={`${item.title}-${item.org}`}
+                  className={`credential-card ${index === credentials.length - 1 ? 'credential-card-compact' : ''}`}
                   variants={reveal}
                   transition={{ duration: 0.65 }}
                 >
-                  <div className="credential-image-wrap">
-                    <img src={item.image} alt={item.title} className="credential-image" />
-                  </div>
+                  <img src={item.image} alt={item.title} className="credential-image" />
 
                   <div className="credential-body">
                     <div className="credential-note">{item.note}</div>
@@ -496,8 +549,8 @@ function App() {
           <div className="container contact-shell">
             <BlockTitle
               eyebrow="Contact"
-              title="A closing section with enough polish to leave the right final impression."
-              text="The contact area is intentionally quiet and premium so the page ends with confidence instead of clutter."
+              title="A clean closing section keeps the final impression professional and focused."
+              text="It gives the page a calm finish while making it easy to reach you for engineering, automation, or technical collaboration."
               left
             />
 
@@ -536,7 +589,7 @@ function App() {
       <footer className="footer">
         <div className="container footer-row">
           <p>© 2026 Eslam Reda Yassen</p>
-          <p>Professional engineering portfolio</p>
+          <p>Electrical power engineering portfolio</p>
         </div>
       </footer>
     </div>
