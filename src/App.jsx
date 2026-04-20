@@ -17,6 +17,7 @@ import {
   Star,
   Wrench,
   X,
+  Zap,
 } from 'lucide-react';
 
 import profileImg from './assets/images/eslam-reda-profile.jpg';
@@ -97,11 +98,11 @@ const journey = [
     text: 'Hands-on exposure to LV panels, ATS, MCC, Schneider-based equipment, and the discipline of industrial electrical work.',
   },
   {
-    year: '2025',
-    icon: GraduationCap,
-    title: 'ITI Training',
-    subtitle: 'Additional technical development',
-    text: 'Completed additional training as part of my broader technical development, while keeping my main professional direction centered on Electrical Power Engineering.',
+ year: '2025',
+icon: BriefcaseBusiness,
+title: 'HA CONSULTING GROUP',
+subtitle: 'Industrial Automation Training',
+text: 'Completed intensive training in Classic Control, PLC programming, and Electric Drives. Gained hands-on experience in motor control circuits, industrial automation systems, and real-world control panel applications.'
   },
 ];
 
